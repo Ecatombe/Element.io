@@ -3,11 +3,13 @@ class Main {
         @JvmStatic
         fun main(args: Array<String>) {
 
+
             val view = ViewImplementation()
 
-            // The real one in order to do stdin
-            val exercise = Exercise(args[0], args[1], view)
+            val input = generateSequence(::readLine)
+            val lines = input.toList()
 
+            val exercise = Exercise(lines, args[0], view)
             exercise.resolve()
         }
     }

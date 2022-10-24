@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ExerciseTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-10-16T16:53:18" hostname="ClapTrap-2-2.broadband" time="1.34">
+<testsuite name="ExerciseTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2022-10-24T15:38:42" hostname="ClapTrap-2-2.broadband" time="1.518">
   <properties/>
-  <testcase name="when entry has asterisk on hour show correct format of time()" classname="ExerciseTest" time="1.32"/>
-  <testcase name="when the path is correct but file is in the wrong format return error()" classname="ExerciseTest" time="0.004"/>
+  <testcase name="when the file is in the right format but time has minutes not as int return error()" classname="ExerciseTest" time="1.489"/>
+  <testcase name="when entry has asterisk on hour show correct format of time()" classname="ExerciseTest" time="0.003"/>
+  <testcase name="when the file is in the right format but time has hour not as int return error()" classname="ExerciseTest" time="0.002"/>
+  <testcase name="when the path is correct but file is in the wrong format return error()" classname="ExerciseTest" time="0.003"/>
+  <testcase name="when the file is in the right format but time is not return error()" classname="ExerciseTest" time="0.002"/>
+  <testcase name="when the file is in the right format but time has invalid minute return error()" classname="ExerciseTest" time="0.002"/>
   <testcase name="when entry has asterisk on both minutes and hours show correct format of time()" classname="ExerciseTest" time="0.002"/>
-  <testcase name="when the path is not correct return error()" classname="ExerciseTest" time="0.001"/>
   <testcase name="when path and file are correct show results()" classname="ExerciseTest" time="0.003"/>
-  <testcase name="when entry has asterisk on minute show correct format of time()" classname="ExerciseTest" time="0.002"/>
+  <testcase name="when the file is in the right format but time has invalid hour return error()" classname="ExerciseTest" time="0.001"/>
+  <testcase name="when entry has asterisk on minute show correct format of time()" classname="ExerciseTest" time="0.001"/>
   <testcase name="when entry has no asterisk show correct format of time()" classname="ExerciseTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

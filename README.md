@@ -6,16 +6,16 @@ kotlinc Main.kt Exercise.kt -include-runtime -d main.jar
 ```
 3. Execute the program via:
 ```shell
-java -jar main.jar <pathToInputFile> <Timestamp>
+cat input.txt | kotlin main.jar <your_time_stamp>
 ```
 for instance
 ```shell
-java -jar main.jar ../resources/input.txt 16:10
+cat input.txt | kotlin main.jar 23:59
 ```
 # Structure and solution
 I went for a simple approach where the 2 main task (reading the file and provide the solution)
 are done all in the Exercise.kt file.
-Once the check on the file are completed the class provide the formatted output Strings as required from the test.
+Once the checks on the file and the time are completed the class provide the formatted output Strings as required from the test.
 I have provided a set of test for both checking the file and the output.
 
 # What I will improve/change if I had more time

@@ -1,16 +1,40 @@
-import java.io.File
 import java.io.FileNotFoundException
 
 class Exercise(
-    private val pathToFile: String,
+    private val lines: List<String>,
     private val time: String,
     private val view: View
 ) {
 
     fun resolve() {
-        if (isFileValid()) {
+        if (isFileValid() && isTimeValid()) {
             defineSolution()
         }
+    }
+
+    private fun isTimeValid(): Boolean {
+        val chunks = time.split(":")
+        if (chunks.count() != 2) {
+            view.showError("Error while parsing time. Is it in HH:mm format? ")
+            return false
+        }
+        try {
+            if (chunks[0].toIntOrNull()!! > 23 || chunks[0].toIntOrNull()!! < 0) {
+                view.showError("Error while parsing time. Invalid hour parsed")
+                return false
+            }
+            if (chunks[1].toIntOrNull()!! > 59 || chunks[1].toIntOrNull()!! < 0) {
+                view.showError("Error while parsing time. Invalid minute parsed")
+                return false
+            }
+        } catch (e: NumberFormatException) {
+            view.showError("Error while parsing time. One of the value is not a valid time value ")
+        } catch (exception: NullPointerException) {
+            view.showError("Error while parsing time. Value provided not a int")
+            return false
+        }
+
+        return true
     }
 
     //    Check if the file exist and is in the right format
@@ -18,9 +42,6 @@ class Exercise(
     private fun isFileValid(): Boolean {
         try {
 
-            val file = File(pathToFile).readText()
-
-            var lines = file.lines()
             lines.forEach { line ->
                 if (!line.isNullOrEmpty()) {
                     val chunks = line.split(" ")
@@ -31,20 +52,18 @@ class Exercise(
                 }
             }
             return true
-        } catch (exception: FileNotFoundException) {
-            view.showError("Error on getting file: " + exception.message.toString())
-            return false
+
         } catch (exception: NullPointerException) {
             view.showError("File null: " + exception.message.toString())
+            return false
+        } catch (exception: FileNotFoundException) {
+            view.showError("Error on getting file: " + exception.message.toString())
             return false
         }
     }
 
     // Read each line from the file, format it (if any asterisk is present) and then send the formatted string
     private fun defineSolution() {
-
-        val innerFileContent = File(pathToFile).readText()
-        var lines = innerFileContent.lines()
 
         lines.forEach {
             if (!it.isNullOrEmpty()) {
@@ -64,7 +83,7 @@ class Exercise(
         return if (value == ASTERISK) time else value
     }
 
-//     Format the minutes given form the file
+    //     Format the minutes given form the file
 //     if both hour and minutes are ASTERISK then the stdin time is the closest one
 //     if only minutes are ASTERISK then return 00
 //     else return the minutes  value from the file
