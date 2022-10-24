@@ -29,6 +29,7 @@ class Exercise(
             }
         } catch (e: NumberFormatException) {
             view.showError("Error while parsing time. One of the value is not a valid time value ")
+            return false
         } catch (exception: NullPointerException) {
             view.showError("Error while parsing time. Value provided not a int")
             return false

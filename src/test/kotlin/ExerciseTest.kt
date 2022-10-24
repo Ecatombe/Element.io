@@ -23,7 +23,6 @@ internal class ExerciseTest {
     }
 
 
-
 //    private const val INVALID_MINUTE_TIME = "23:60"
 //    private const val INVALID_MINUTE_NOT_INT_TIME = "ab:10"
 
@@ -86,7 +85,6 @@ internal class ExerciseTest {
         // THEN
         verify(view).showError(any())
     }
-
 
 
     @Test
